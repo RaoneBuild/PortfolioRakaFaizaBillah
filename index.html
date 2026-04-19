@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Raka Faiza Billah | Portfolio Profesional</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ========== CSS VARIABLES & RESET ========== */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1e293b;
+            --gray-bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-soft: #334155;
+            --text-muted: #475569;
+            --border-light: #e2e8f0;
+            --card-border: #eef2ff;
+            --shadow-sm: 0 4px 10px rgba(0,0,0,0.03);
+            --shadow-md: 0 12px 28px -8px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 30px -12px rgba(0,0,0,0.15);
+            --radius-card: 24px;
+            --radius-btn: 40px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 16px;
+            z-index: 200;
+            text-decoration: none;
+            border-radius: 0 0 8px 0;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .navbar {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            flex-wrap: wrap;
+            /* Tambahan margin kanan-kiri */
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+            background: linear-gradient(135deg, #1e293b, #2d3a4e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            /* Sedikit margin tambahan */
+            margin-left: 4px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-right: 4px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--primary-dark);
+            transition: var(--transition);
+            font-size: 1rem;
+            padding: 10px 6px;
+            border-radius: 30px;
+        }
+        @media (max-width: 700px) {
+            .nav-links a {
+                padding: 12px 10px;
+            }
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.06);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            /* padding atas dihilangkan agar banner mentok ke atas */
+            padding: 0 0 40px;
+            text-align: center;
+        }
+
+        /* === BANNER STYLES (MENTOK ATAS) === */
+        .hero-banner {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 0 30px 0;   /* margin bawah saja, tanpa margin atas */
+            border-radius: 0;       /* banner rata kiri-kanan, bisa diatur jika ingin */
+            box-shadow: var(--shadow-md);
+            border: none;           /* hapus border agar lebih clean */
+            transition: var(--transition);
+        }
+        .hero-banner:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(120deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-top: 20px; /* beri jarak dengan banner */
+        }
+        .hero p {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            color: var(--text-soft);
+            max-width: 680px;
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+        .quick-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        .btn {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 14px 28px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--primary-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .btn-primary {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0f172a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
+        }
+        .btn-outline {
+            background: white;
+            border-color: #cbd5e1;
+        }
+        .btn-outline:hover {
+            background: #f1f5f9;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1);
+            border-color: #94a3b8;
+        }
+
+        section {
+            padding: clamp(40px, 8vw, 70px) 0;
+            border-bottom: 1px solid #e2edf2;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .skill-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .skill-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0 20px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 16px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 26px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            background: #eef2ff;
+            color: var(--primary-dark);
+        }
+        .tab-btn.active {
+            background: var(--primary-dark);
+            color: white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            border-color: var(--primary-dark);
+        }
+        .tab-desc {
+            background: #f1f5f9;
+            padding: 18px 26px;
+            border-radius: 20px;
+            margin-bottom: 36px;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            border-left: 6px solid var(--primary);
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+        }
+        .card {
+            background: white;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #eef2ff;
+            transition: transform 0.3s;
+        }
+        .card:hover .card-img {
+            transform: scale(1.02);
+        }
+        .card-content {
+            padding: 20px 18px 24px;
+            flex: 1;
+        }
+        .card-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            border-radius: 32px;
+            padding: 36px 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--card-border);
+        }
+        .bio-list {
+            flex: 1.5;
+            min-width: 250px;
+        }
+        .bio-list p {
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+        .bio-list i {
+            width: 28px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        .background-text {
+            flex: 2;
+            min-width: 280px;
+        }
+        .background-text h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .background-text p {
+            margin-bottom: 18px;
+            color: var(--text-soft);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 32px;
+            padding: 36px 28px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 24px;
+            margin: 32px 0 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .whatsapp-btn, .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        .email-btn {
+            background: var(--primary);
+            color: white;
+        }
+        .whatsapp-btn:hover, .email-btn:hover {
+            filter: brightness(0.9);
+            transform: scale(1.02);
+            box-shadow: 0 10px 18px -6px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 36px 0;
+            color: #5b6e8c;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+            padding: 16px;
+        }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            text-align: center;
+            animation: fadeUp 0.25s ease;
+            box-shadow: 0 25px 50px -12px black;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            margin: 0 auto;
+        }
+        .modal-caption {
+            padding: 18px 24px;
+            font-weight: 500;
+            background: white;
+            font-size: 1rem;
+            color: var(--primary-dark);
+        }
+        .close-modal {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            font-size: 44px;
+            color: white;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            line-height: 1;
+        }
+        .close-modal:hover {
+            background: rgba(0,0,0,0.8);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: scale(0.95);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 700px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 12px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 6px;
+            }
+            .quick-buttons .btn {
+                padding: 14px 24px;
+                width: 100%;
+                max-width: 260px;
+                justify-content: center;
+            }
+            .section-title {
+                display: block;
+            }
+            .section-title:after {
+                width: 40%;
+            }
+            .tab-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            .contact-buttons .btn,
+            .whatsapp-btn, .email-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .about-grid {
+                padding: 24px 20px;
+            }
+            .hero-banner {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 18px;
+            }
+            .skill-card {
+                padding: 24px 18px;
+            }
+            .card-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+<div class="navbar">
+    <div class="container nav-wrapper">
+        <div class="logo">Raka Faiza Billah</div>
+        <div class="nav-links">
+            <a href="#home">Beranda</a>
+            <a href="#skills">Skill</a>
+            <a href="#projects">Project</a>
+            <a href="#about">Tentang</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </div>
+</div>
+
+<main id="main-content">
+     <img src="Banner-Portfolio1900x600.png" 
+             alt="Banner Portfolio Raka Faiza Billah" 
+             class="hero-banner"
+             loading="eager">
+    <section id="home">
+        <!-- Banner langsung di dalam section, tanpa container agar full width -->
+        
+        <div class="container hero">
+            <h1>Raka Faiza Billah</h1>
+            <p>Portfolio — pengembang aplikasi multiplatform & desain kreatif. <br> Menyajikan karya nyata dari pengalaman industri dan pendidikan.</p>
+            <div class="quick-buttons">
+                <a href="#skills" class="btn btn-primary"><i class="fas fa-code" aria-hidden="true"></i> Skill</a>
+                <a href="#projects" class="btn btn-outline"><i class="fas fa-images" aria-hidden="true"></i> Project</a>
+                <a href="#about" class="btn btn-outline"><i class="fas fa-user" aria-hidden="true"></i> About</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Keahlian & Teknologi</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-microsoft" aria-hidden="true"></i><h3>Microsoft Office Suite</h3><p>Mahir menggunakan Microsoft Word, Excel, dan PowerPoint. Terbiasa melakukan entri data, pembuatan laporan, analisis data dengan rumus dan pivot, serta presentasi profesional.</p></div>
+                <div class="skill-card"><i class="fab fa-android" aria-hidden="true"></i><h3>Android (Flutter)</h3><p>Pengembangan aplikasi mobile modern, state management, API integration, dan UI/UX responsif.</p></div>
+                <div class="skill-card"><i class="fas fa-globe" aria-hidden="true"></i><h3>Web Development</h3><p>HTML, CSS, JavaScript, React, serta desain web portfolio interaktif dan dinamis.</p></div>
+                <div class="skill-card"><i class="fas fa-laptop-code" aria-hidden="true"></i><h3>Desktop App (.NET C#)</h3><p>Aplikasi kasir, manajemen data dengan Windows Forms, database SQL, dan laporan.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Galeri Project</h2>
+            <div class="project-tabs" id="projectTabs">
+                <button class="tab-btn active" data-category="ms365">📁 Office (Excel)</button>
+                <button class="tab-btn" data-category="android">📱 Android (Flutter)</button>
+                <button class="tab-btn" data-category="web">🌐 Web</button>
+                <button class="tab-btn" data-category="desktop">🖥️ Desktop</button>
+            </div>
+            <div id="tabDescription" class="tab-desc"></div>
+            <div id="galleryContainer" class="gallery-grid"></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-grid">
+                <div class="bio-list">
+                    <p><i class="fas fa-user-circle" aria-hidden="true"></i> <strong>Nama:</strong> Raka Faiza Billah</p>
+                    <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> <strong>Tgl Lahir:</strong> 15 Desember 2008</p>
+                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>Asal:</strong> Jawa Barat, Sumedang, Sumedang Selatan</p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> rakafaizabillah@gmail.com</p>
+                    <p><i class="fas fa-school" aria-hidden="true"></i> <strong>Pendidikan:</strong> SMKN 1 SUMEDANG</p>
+                    <p><i class="fab fa-whatsapp" aria-hidden="true"></i> <strong>WhatsApp:</strong> +62 881-8365-284</p>
+                </div>
+                <div class="background-text">
+                    <h3>Latar Belakang & Perjalanan</h3>
+                    <p>Saya seorang pengembang muda dengan semangat tinggi dalam teknologi dan inovasi. Saat ini menempuh pendidikan di SMKN 1 Sumedang jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Telah mengerjakan berbagai proyek mulai dari aplikasi kasir berbasis dekstop, sistem manajemen yayasan (Rumpin), aplikasi kesehatan offline Cekdong, hingga berbagai web portfolio interaktif. Terbiasa dengan kolaborasi tim, eksplorasi teknologi baru, dan selalu berusaha memberikan solusi terbaik untuk kebutuhan digital.</p>
+                    <p>Saya percaya bahwa kode yang baik dapat mengubah ide menjadi dampak nyata. Portfolio ini merupakan wadah untuk menunjukkan dedikasi dan karya yang telah dibuat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="contact-card">
+                <i class="fas fa-paper-plane" style="font-size:2.8rem; color:#3b82f6;" aria-hidden="true"></i>
+                <h3 style="margin:20px 0 8px; font-size:1.8rem;">Mari terhubung & berkolaborasi</h3>
+                <div class="contact-buttons">
+                    <a href="mailto:rakafaizabillah@gmail.com" class="email-btn" aria-label="Kirim email ke Raka"><i class="fas fa-envelope" aria-hidden="true"></i> rakafaizabillah@gmail.com</a>
+                    <a href="https://wa.me/628818365284?text=Halo%20Raka,%20saya%20tertarik%20dengan%20portfolio%20Anda" target="_blank" class="whatsapp-btn" aria-label="Chat WhatsApp dengan Raka"><i class="fab fa-whatsapp" aria-hidden="true"></i> +62 881-8365-284</a>
+                </div>
+                <p style="margin-top:28px; color:#475569;">Siap bekerja sama untuk proyek menarik atau diskusi teknologi.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">© <span id="currentYear"></span> Raka Faiza Billah — Portfolio Profesional Dinamis | Semua karya merupakan dokumentasi nyata.</div>
+    </footer>
+</main>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
+    <span class="close-modal" aria-label="Tutup modal" tabindex="0">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" class="modal-img" src="" alt="Full size project">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+</div>
+
+<script>
+    // SCRIPT TETAP SAMA PERSIS
+    (function() {
+        const ms365Cards = [];
+        for (let i = 1; i <= 6; i++) {
+            ms365Cards.push({
+                title: `Excel – Analisis Data & Laporan (${i}/6)`,
+                desc: `Contoh hasil kerja Microsoft Excel: pengolahan data, rumus, pivot table, dan visualisasi. Kemampuan juga mencakup Word (dokumen) dan PowerPoint (presentasi) serta data entry.`,
+                image: `ex${i}.png`
+            });
+        }
+
+        const androidCards = [];
+        for (let i = 1; i <= 9; i++) {
+            androidCards.push({
+                title: `Cekdong - Aplikasi Kesehatan Mandiri`,
+                desc: `Aplikasi cek kesehatan mandiri sederhana tanpa internet. Fitur diagnosa sederhana, dan penanganan P3K yang umum terjadi. (Screenshot ${i})`,
+                image: `cek${i}.jpg`
+            });
+        }
+        for (let i = 1; i <= 3; i++) {
+            androidCards.push({
+                title: `Kasir Raone - Aplikasi Kasir UMKM`,
+                desc: `Aplikasi kasir untuk UMKM dengan fitur buat transaksi, histori transaksi, cetak struk, dan penghitung keuntungan dari fee produk yang dicantumkan. (Gambar ${i})`,
+                image: `k${i}.jpg`
+            });
+        }
+        for (let i = 1; i <= 12; i++) {
+            androidCards.push({
+                title: `Rumpin - Manajemen Yayasan`,
+                desc: `Sistem informasi pengelolaan yayasan: data user/murid, UMKM melalui yayasan, kegiatan, notifikasi umum, dan laporan berbasis database online (Supabase). (Dokumentasi ${i})`,
+                image: `m${i}.jpg`
+            });
+        }
+
+        const webCards = [];
+        for (let i = 1; i <= 11; i++) {
+            webCards.push({
+                title: `Web Portfolio Project ${i}`,
+                desc: `Desain dan pengembangan website portfolio responsif, modern, dengan teknologi terkini.`,
+                image: `w${i}.png`
+            });
+        }
+
+        const desktopCards = [];
+        for (let i = 1; i <= 3; i++) {
+            desktopCards.push({
+                title: `Kasir Desktop (C# .NET WinForms)`,
+                desc: `Aplikasi kasir berbasis Windows Forms dengan database SQL Server, laporan transaksi, dan manajemen stok. (Preview ${i})`,
+                image: `d${i}.png`
+            });
+        }
+
+        const projectsData = { ms365: ms365Cards, android: androidCards, web: webCards, desktop: desktopCards };
+        const tabDescriptions = {
+            ms365: "📊 Microsoft Office Suite: Kemampuan menggunakan Word (dokumen, surat, laporan), Excel (entri data, formula, pivot, chart), dan PowerPoint (presentasi profesional). Galeri menampilkan 6 contoh hasil kerja di Excel.",
+            android: "📱 Android (Flutter) — Aplikasi nyata: Manajemen Yayasan 'Rumpin' (12 foto), Aplikasi Kesehatan Offline 'Cekdong' (9 foto), dan Aplikasi Kasir Sederhana 'Kasir Raone' (3 foto). Total 24 project screenshot.",
+            web: "🌐 Web Portfolio & Pengembangan Web: Kumpulan desain website portfolio interaktif, company profile, dan aplikasi web yang pernah dibuat. 11 preview karya.",
+            desktop: "🖥️ Desktop Application: Aplikasi Kasir berbasis C# .NET Windows Forms dengan fitur transaksi, laporan, dan manajemen stok. 3 tampilan utama aplikasi."
+        };
+
+        let activeCategory = "ms365";
+        const galleryContainer = document.getElementById("galleryContainer");
+        const tabDescEl = document.getElementById("tabDescription");
+
+        function renderGallery(category) {
+            const cards = projectsData[category];
+            if (!galleryContainer) return;
+            galleryContainer.innerHTML = "";
+            cards.forEach((card) => {
+                const cardDiv = document.createElement("div");
+                cardDiv.className = "card";
+                cardDiv.setAttribute("data-fullimage", card.image);
+                cardDiv.setAttribute("data-caption", `${card.title} — ${card.desc}`);
+                cardDiv.innerHTML = `
+                    <img class="card-img" src="${card.image}" alt="${card.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
+                    <div class="card-content">
+                        <div class="card-title">${card.title}</div>
+                        <div class="card-desc">${card.desc}</div>
+                    </div>
+                `;
+                cardDiv.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    openModal(card.image, `${card.title} — ${card.desc}`);
+                });
+                galleryContainer.appendChild(cardDiv);
+            });
+            if (tabDescEl) tabDescEl.textContent = tabDescriptions[category] || "Galeri project tersedia.";
+        }
+
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalCaption = document.getElementById("modalCaption");
+        const closeModalBtn = document.querySelector(".close-modal");
+
+        function openModal(imgSrc, caption) {
+            if (!modal) return;
+            modal.style.display = "flex";
+            modalImage.src = imgSrc;
+            modalCaption.textContent = caption;
+            document.body.style.overflow = "hidden";
+            closeModalBtn.focus();
+        }
+        function closeModal() {
+            if (!modal) return;
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener("click", closeModal);
+            closeModalBtn.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); closeModal(); }
+            });
+        }
+        modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.style.display === "flex") closeModal(); });
+
+        function initTabs() {
+            document.querySelectorAll(".tab-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const cat = btn.getAttribute("data-category");
+                    if (!cat) return;
+                    activeCategory = cat;
+                    document.querySelectorAll(".tab-btn").forEach(t => t.classList.remove("active"));
+                    btn.classList.add("active");
+                    renderGallery(activeCategory);
+                });
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 70;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                }
+            });
+        });
+
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        renderGallery("ms365");
+        initTabs();
+        console.log("✅ Portfolio siap dengan banner mentok atas & navbar margin.");
+    })();
+</script>
+</body>
+</html>
