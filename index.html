@@ -77,7 +77,6 @@
             align-items: center;
             padding: 14px 0;
             flex-wrap: wrap;
-            /* Tambahan margin kanan-kiri */
             padding-left: 8px;
             padding-right: 8px;
         }
@@ -89,7 +88,6 @@
             background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
-            /* Sedikit margin tambahan */
             margin-left: 4px;
         }
         .nav-links {
@@ -118,23 +116,25 @@
             background: rgba(59, 130, 246, 0.06);
         }
 
-        /* ========== HERO ========== */
+        /* === HERO & BANNER === */
+        #home {
+            padding-top: 0;   /* agar banner langsung menempel navbar */
+        }
+
         .hero {
-            /* padding atas dihilangkan agar banner mentok ke atas */
             padding: 0 0 40px;
             text-align: center;
         }
 
-        /* === BANNER STYLES (MENTOK ATAS) === */
         .hero-banner {
             width: 100%;
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 0 30px 0;   /* margin bawah saja, tanpa margin atas */
-            border-radius: 0;       /* banner rata kiri-kanan, bisa diatur jika ingin */
+            margin: 0 0 30px 0;
+            border-radius: 0;
             box-shadow: var(--shadow-md);
-            border: none;           /* hapus border agar lebih clean */
+            border: none;
             transition: var(--transition);
         }
         .hero-banner:hover {
@@ -150,7 +150,7 @@
             background-clip: text;
             color: transparent;
             line-height: 1.2;
-            margin-top: 20px; /* beri jarak dengan banner */
+            margin-top: 20px;
         }
         .hero p {
             font-size: clamp(1rem, 4vw, 1.25rem);
@@ -408,7 +408,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        .whatsapp-btn, .email-btn {
+        .whatsapp-btn, .email-btn, .ig-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -428,7 +428,11 @@
             background: var(--primary);
             color: white;
         }
-        .whatsapp-btn:hover, .email-btn:hover {
+        .ig-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+        .whatsapp-btn:hover, .email-btn:hover, .ig-btn:hover {
             filter: brightness(0.9);
             transform: scale(1.02);
             box-shadow: 0 10px 18px -6px rgba(0,0,0,0.2);
@@ -532,7 +536,7 @@
                 font-size: 0.9rem;
             }
             .contact-buttons .btn,
-            .whatsapp-btn, .email-btn {
+            .whatsapp-btn, .email-btn, .ig-btn {
                 width: 100%;
                 justify-content: center;
             }
@@ -574,13 +578,13 @@
 </div>
 
 <main id="main-content">
-     <img src="Banner-Portfolio1900x600.png" 
-             alt="Banner Portfolio Raka Faiza Billah" 
-             class="hero-banner"
-             loading="eager">
+    <!-- BANNER FULL WIDTH, MENEMPEL NAVBAR -->
+    <img src="Banner-Portfolio1900x600.png" 
+         alt="Banner Portfolio Raka Faiza Billah" 
+         class="hero-banner"
+         loading="eager">
+
     <section id="home">
-        <!-- Banner langsung di dalam section, tanpa container agar full width -->
-        
         <div class="container hero">
             <h1>Raka Faiza Billah</h1>
             <p>Portfolio — pengembang aplikasi multiplatform & desain kreatif. <br> Menyajikan karya nyata dari pengalaman industri dan pendidikan.</p>
@@ -648,8 +652,9 @@
                 <i class="fas fa-paper-plane" style="font-size:2.8rem; color:#3b82f6;" aria-hidden="true"></i>
                 <h3 style="margin:20px 0 8px; font-size:1.8rem;">Mari terhubung & berkolaborasi</h3>
                 <div class="contact-buttons">
-                    <a href="mailto:rakafaizabillah@gmail.com" class="email-btn" aria-label="Kirim email ke Raka"><i class="fas fa-envelope" aria-hidden="true"></i> rakafaizabillah@gmail.com</a>
-                    <a href="https://wa.me/628818365284?text=Halo%20Raka,%20saya%20tertarik%20dengan%20portfolio%20Anda" target="_blank" class="whatsapp-btn" aria-label="Chat WhatsApp dengan Raka"><i class="fab fa-whatsapp" aria-hidden="true"></i> +62 881-8365-284</a>
+                    <a href="mailto:rakafaizabillah@gmail.com" class="email-btn" aria-label="Kirim email ke Raka"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+                    <a href="https://wa.me/628818365284?text=Halo%20Raka,%20saya%20tertarik%20dengan%20portfolio%20Anda" target="_blank" class="whatsapp-btn" aria-label="Chat WhatsApp dengan Raka"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                    <a href="https://www.instagram.com/rakafaizabillah?igsh=YXlnMjJkcGF5djNs" target="_blank" class="ig-btn" aria-label="Kunjungi Instagram Raka"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
                 </div>
                 <p style="margin-top:28px; color:#475569;">Siap bekerja sama untuk proyek menarik atau diskusi teknologi.</p>
             </div>
@@ -670,8 +675,8 @@
 </div>
 
 <script>
-    // SCRIPT TETAP SAMA PERSIS
     (function() {
+        // DATA PROYEK DENGAN DESKRIPSI BARU KASIR RAONE
         const ms365Cards = [];
         for (let i = 1; i <= 6; i++) {
             ms365Cards.push({
@@ -692,7 +697,7 @@
         for (let i = 1; i <= 3; i++) {
             androidCards.push({
                 title: `Kasir Raone - Aplikasi Kasir UMKM`,
-                desc: `Aplikasi kasir untuk UMKM dengan fitur buat transaksi, histori transaksi, cetak struk, dan penghitung keuntungan dari fee produk yang dicantumkan. (Gambar ${i})`,
+                desc: `Raone Management System: kasir + manajemen keuangan mikro. Transaksi, omzet & grafik, histori, penyimpanan lokal, cetak struk PNG. Dalam pengembangan & update rutin.`,
                 image: `k${i}.jpg`
             });
         }
@@ -725,7 +730,7 @@
         const projectsData = { ms365: ms365Cards, android: androidCards, web: webCards, desktop: desktopCards };
         const tabDescriptions = {
             ms365: "📊 Microsoft Office Suite: Kemampuan menggunakan Word (dokumen, surat, laporan), Excel (entri data, formula, pivot, chart), dan PowerPoint (presentasi profesional). Galeri menampilkan 6 contoh hasil kerja di Excel.",
-            android: "📱 Android (Flutter) — Aplikasi nyata: Manajemen Yayasan 'Rumpin' (12 foto), Aplikasi Kesehatan Offline 'Cekdong' (9 foto), dan Aplikasi Kasir Sederhana 'Kasir Raone' (3 foto). Total 24 project screenshot.",
+            android: "📱 Android (Flutter) — Aplikasi nyata: Manajemen Yayasan 'Rumpin' (12 foto), Aplikasi Kesehatan Offline 'Cekdong' (9 foto), dan Aplikasi Kasir 'Kasir Raone' (3 foto). Total 24 screenshot.",
             web: "🌐 Web Portfolio & Pengembangan Web: Kumpulan desain website portfolio interaktif, company profile, dan aplikasi web yang pernah dibuat. 11 preview karya.",
             desktop: "🖥️ Desktop Application: Aplikasi Kasir berbasis C# .NET Windows Forms dengan fitur transaksi, laporan, dan manajemen stok. 3 tampilan utama aplikasi."
         };
@@ -817,7 +822,7 @@
         document.getElementById("currentYear").textContent = new Date().getFullYear();
         renderGallery("ms365");
         initTabs();
-        console.log("✅ Portfolio siap dengan banner mentok atas & navbar margin.");
+        console.log("✅ Portfolio siap dengan banner, deskripsi Raone baru, dan kontak Instagram.");
     })();
 </script>
 </body>
